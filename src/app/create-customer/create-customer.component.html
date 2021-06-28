@@ -2,31 +2,31 @@
     <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
     <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
   </svg></h2>
-<form (ngSubmit)="onSubmit()">
+<form #addForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label>First Name</label>
-        <input type="text" class="form-control" id="firstName" [(ngModel)]="customer.firstName" name="firstName">
+        <input type="text" class="form-control" id="firstName" [(ngModel)]="customer.firstName" name="firstName" required>
     </div>
 
     <div class="form-group">
         <label>Last Name</label>
-        <input type="text" class="form-control" id="lastName" [(ngModel)]="customer.lastName" name="lastName">
+        <input type="text" class="form-control" id="lastName" [(ngModel)]="customer.lastName" name="lastName" required>
     </div>
 
     <div class="form-group">
         <label>Email</label>
-        <input type="text" class="form-control" id="email" [(ngModel)]="customer.email" name="email">
+        <input type="text" class="form-control" id="email" [(ngModel)]="customer.email" name="email" required>
     </div>
 
     <div class="form-group">
         <label>Address</label>
-        <input type="text" class="form-control" id="address" [(ngModel)]="customer.address" name="address">
+        <input type="text" class="form-control" id="address" [(ngModel)]="customer.address" name="address" required>
     </div>
 
     <div class="form-group">
         <label>Mobile</label>
-        <input type="number" class="form-control" id="mobile" [(ngModel)]="customer.mobile" name="mobile">
+        <input type="number" class="form-control" id="mobile" [(ngModel)]="customer.mobile" name="mobile" required>
     </div>
 
-    <button class="btn btn-success" type="submit">Submit</button>
+    <button [disabled]="addForm.invalid" class="btn btn-success" type="submit">Submit</button>
 </form>

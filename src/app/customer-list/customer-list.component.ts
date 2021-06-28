@@ -57,5 +57,14 @@ export class CustomerListComponent implements OnInit {
     },error => console.log(console.error))
    
  }
- 
+
+ viewCustomerById(id: number){
+  this.customerService.getCustomerById(id).subscribe(data => {
+    console.log(data),
+    this.getCustomers();
+    this.router.navigate(['/customer-details',id]);
+  
+},)
 }
+}
+ 

@@ -25,7 +25,7 @@ export class UpdateCustomerComponent implements OnInit {
   }
  
   onSubmit(){
-    this.customerService.udpateCustomer(this.customer).subscribe(data => {
+    this.customerService.updateCustomer(this.customer).subscribe(data => {
       this.navigateToCustomers();
     }, error => console.log(error));
   }

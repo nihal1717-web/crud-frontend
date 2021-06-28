@@ -23,11 +23,15 @@ export class CustomerService {
     return this.httpClient.get<Customer>(`${this.baseURL}` + `/getById/${id}`);
   }
  
-  udpateCustomer(customer: Customer): Observable<Object> {
+  updateCustomer(customer: Customer): Observable<Object> {
     return this.httpClient.put(`${this.baseURL}` + `/update`, customer);
   }
 
   deleteCustomer(id: number): Observable<object>{
     return this.httpClient.delete(`${this.baseURL}/delete/${id}`);
+  }
+
+  viewCustomerById(id: number): Observable<Customer> {
+    return this.httpClient.get<Customer>(`${this.baseURL}` + `/getById/${id}`);
   }
 }

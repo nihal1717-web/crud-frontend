@@ -2,6 +2,8 @@ import { CustomerService } from './../customer.service';
 import { Customer } from './../customer';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
  
 @Component({
   selector: 'app-create-customer',
@@ -11,6 +13,7 @@ import { Router } from '@angular/router';
 export class CreateCustomerComponent implements OnInit {
  
   customer: Customer = new Customer();
+  addForm!: NgForm;
  
   constructor(private customerService: CustomerService, private router: Router) { }
  
@@ -18,12 +21,15 @@ export class CreateCustomerComponent implements OnInit {
   }
  
   onSubmit() {
-    this.saveCustomer();
+    console.log('inside onsubmit method..')
+    this.saveCustomer(this.addForm);
   }
  
-  saveCustomer(){
-    this.customerService.createCustomer(this.customer).subscribe( data => {console.log(data);}, error => console.log(error));
-    this.navigateToCustomers();
+  saveCustomer(addForm: NgForm){
+    this.customerService.createCustomer(this.customer).subscribe( data => {console.log(data);
+    this.navigateToCustomers();},
+    (error: HttpErrorResponse) => {console.log(error); alert(error.message);addForm.reset();})
+    
   }
  
   navigateToCustomers(){

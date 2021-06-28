@@ -12,6 +12,7 @@
             <th>Mobile</th>
             <th>Edit</th>
             <th>Remove</th>
+            <th>Profile</th>
 
 
 
@@ -31,6 +32,10 @@
             </td>
 
             <td><button (click)="deleteCustomer(customer.id)" class="btn btn-danger " type="submit ">Delete</button>
+            </td>
+
+            <td>
+                <button (click)="viewCustomerById(customer.id) " class="btn btn-info " type="submit ">View</button>
             </td>
 
 
